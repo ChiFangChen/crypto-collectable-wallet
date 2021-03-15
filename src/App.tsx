@@ -5,12 +5,12 @@ import 'normalize.css';
 import './i18n.ts';
 import './index.css';
 import Spinner from 'components/Spinner';
-import Main from 'pages/Main';
+import RootRouter from 'router/RootRouter';
 
 function App() {
   return (
     <Suspense fallback={<Spinner wrapperHeight="100vh" />}>
-      <Main />
+      <RootRouter />
     </Suspense>
   );
 }
