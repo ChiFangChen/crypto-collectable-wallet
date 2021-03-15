@@ -1,8 +1,8 @@
 {
-  "name": "github-repos-searcher",
+  "name": "crypto-collectable-wallet",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://ChiFangChen.github.io/github-repos-searcher",
+  "homepage": "https://ChiFangChen.github.io/crypto-collectable-wallet",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",

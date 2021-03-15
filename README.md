@@ -1,6 +1,6 @@
-# GitHub repositories searcher
+# Crypto Collectable Wallet
 
-Check the [Demo](https://chifangchen.github.io/github-repos-searcher/)
+Check the [Demo](https://chifangchen.github.io/crypto-collectable-wallet/)
 
 ---
 
@@ -8,7 +8,7 @@ Check the [Demo](https://chifangchen.github.io/github-repos-searcher/)
 
 This project was developed by `React` `Styled Component` & `TypeScript`.
 
-I choose `Material UI` as the design framework. When typing in the search input, it will `debounce` the request of getting the data from API. I also build the code as server-side render files to improve `SEO`. There are two `language` versions provided.
+I choose `Material UI` as the design framework. I also build the code as server-side render files to improve `SEO`. There are two `language` versions provided.
 
 When you reach the bottom of the list block, it will automatically load more data from the API and append the new ones to the list. However, if there is no more data, it will show a message to info you.
 

@@ -1,6 +1,6 @@
 {
-  "short_name": "Kiki Searcher",
-  "name": "Kiki GitHub Repositories Searcher",
+  "short_name": "CCW",
+  "name": "Crypto Collectable Wallet",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,9 +8,9 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo284.png",
+      "src": "logo512.png",
       "type": "image/png",
-      "sizes": "284x284"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
