@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { FC, useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Typography,
@@ -8,6 +8,7 @@ import {
   CardContent,
   CardMedia,
 } from '@material-ui/core';
+import { RouteComponentProps } from 'react-router-dom';
 
 import useGetCollectables from 'hooks/useGetCollectables';
 import LanguageSwitcher from 'components/LanguageSwitcher';
@@ -16,7 +17,7 @@ import TopButton from 'components/TopButton';
 
 import { AppWrapper, List, ListItem } from './styles';
 
-function Main() {
+const MainList: FC<RouteComponentProps> = ({ history: { push } }) => {
   /* i18n */
 
   const { t } = useTranslation();
@@ -81,6 +82,11 @@ function Main() {
     };
   }, [onListScroll]);
 
+  /* others */
+
+  const goDetail = (param: { contract_address: string; token_id: string }) => () =>
+    push(`/detail/${param.contract_address}/${param.token_id}`);
+
   return (
     <AppWrapper>
       <Typography align="center" variant="h3" component="h1">
@@ -92,7 +98,13 @@ function Main() {
       <List ref={listRef}>
         {collectables.map((c: any, i: number) => (
           <ListItem key={`${c.id}${i}`}>
-            <CardActionArea className="action-area">
+            <CardActionArea
+              className="action-area"
+              onClick={goDetail({
+                contract_address: c.asset_contract.address,
+                token_id: c.token_id,
+              })}
+            >
               <CardMedia image={c.image_url} title={c.name} className="image" />
               <CardContent>
                 <Typography component="h5" align="center">
@@ -120,6 +132,6 @@ function Main() {
       </List>
     </AppWrapper>
   );
-}
+};
 
-export default Main;
+export default MainList;
