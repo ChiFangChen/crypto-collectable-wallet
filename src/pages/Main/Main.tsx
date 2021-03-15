@@ -1,15 +1,20 @@
-import React, { ChangeEvent, useState, useMemo, useCallback, useRef, useEffect } from 'react';
-import { debounce } from 'ts-debounce';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Typography, Snackbar, Fade } from '@material-ui/core';
+import {
+  Typography,
+  Snackbar,
+  Fade,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+} from '@material-ui/core';
 
-import { per_page } from 'utils/variables';
-import useGetRepos from 'hooks/useGetRepos';
+import useGetCollectables from 'hooks/useGetCollectables';
 import LanguageSwitcher from 'components/LanguageSwitcher';
 import Spinner from 'components/Spinner';
 import TopButton from 'components/TopButton';
 
-import { AppWrapper, SearchBlock, TextField, RepoList, RepoListItem } from './styles';
+import { AppWrapper, List, ListItem } from './styles';
 
 function Main() {
   /* i18n */
@@ -17,34 +22,20 @@ function Main() {
   const { t } = useTranslation();
 
   /* main data */
-
-  const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
-  const {
-    isLoading,
-    isDone,
-    data: { items: repos, total_count: repoCount },
-    fetch,
-  } = useGetRepos({
-    search,
+  const { isLoading, isDone, data: collectables, isFinished, fetch } = useGetCollectables({
     page,
-    per_page,
   });
 
-  const debounceFetch = useCallback(debounce(fetch, 500), []);
-
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    // init page
-    setPage(1);
-    debounceFetch();
-  };
+  useEffect(() => {
+    fetch();
+  }, []);
 
   useEffect(() => {
     if (isDone) {
       if (page === 1) {
-        repoListRef.current?.scrollTo(0, 0);
+        listRef.current?.scrollTo(0, 0);
       }
       setPage((p) => p + 1);
     }
@@ -56,39 +47,37 @@ function Main() {
 
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const isNotFinished = useMemo(() => repoCount > per_page * (page - 1), [repoCount, page]);
-
   const closeSnackbar = () => setShowSnackbar(false);
 
-  const repoListRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const onTopBottomClick = (): void =>
-    repoListRef.current?.scrollTo({
+    listRef.current?.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
 
   const onListScroll = useCallback(() => {
-    if (!repoListRef.current) return;
+    if (!listRef.current) return;
 
     // clientHeight + scrollTop = scrollHeight
-    const { clientHeight, scrollTop, scrollHeight } = repoListRef.current;
+    const { clientHeight, scrollTop, scrollHeight } = listRef.current;
 
     if (!isLoading && scrollTop + clientHeight >= scrollHeight) {
-      if (isNotFinished) fetch();
-      else setShowSnackbar(true);
+      if (isFinished) setShowSnackbar(true);
+      else fetch();
     }
 
     if (scrollTop > 100) setShowTopBtn(true);
     else setShowTopBtn(false);
-  }, [repoListRef, isLoading, isNotFinished, fetch]);
+  }, [listRef, isLoading, isFinished, fetch]);
 
   useEffect(() => {
-    const repoList = repoListRef.current;
-    if (repoList) repoList.addEventListener('scroll', onListScroll);
+    const list = listRef.current;
+    if (list) list.addEventListener('scroll', onListScroll);
     return () => {
-      if (repoList) repoList.removeEventListener('scroll', onListScroll);
+      if (list) list.removeEventListener('scroll', onListScroll);
     };
   }, [onListScroll]);
 
@@ -100,20 +89,18 @@ function Main() {
 
       <LanguageSwitcher />
 
-      <SearchBlock>
-        <TextField
-          label={t('label')}
-          value={search}
-          onChange={handleSearchChange}
-          className="input"
-        />
-      </SearchBlock>
-
-      <RepoList ref={repoListRef}>
-        {repos.map((repo, i) => (
-          <RepoListItem key={`${repo.id}${i}`} href={repo.svn_url} target="_blank" rel="noreferrer">
-            {repo.full_name}
-          </RepoListItem>
+      <List ref={listRef}>
+        {collectables.map((c: any, i: number) => (
+          <ListItem key={`${c.id}${i}`}>
+            <CardActionArea className="action-area">
+              <CardMedia image={c.image_url} title={c.name} className="image" />
+              <CardContent>
+                <Typography component="h5" align="center">
+                  {c.name}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </ListItem>
         ))}
 
         <Spinner isLoading={isLoading} />
@@ -130,7 +117,7 @@ function Main() {
         </Snackbar>
 
         <TopButton show={showTopBtn} onClick={onTopBottomClick} />
-      </RepoList>
+      </List>
     </AppWrapper>
   );
 }

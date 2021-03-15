@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import MaterialTextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
 
-import { MOBILE_MAX } from 'utils/variables';
-import { FlexCenter } from 'utils/styles';
+import { MOBILE_MAX, TABLET_MIN } from 'utils/variables';
 
 export const AppWrapper = styled.div`
   height: 100vh;
@@ -11,46 +10,23 @@ export const AppWrapper = styled.div`
   padding-top: 25px;
 `;
 
-export const SearchBlock = styled.div`
-  margin: 0 25px 25px;
-
-  > div {
-    width: 100%;
-  }
-`;
-
-export const TextField = styled(MaterialTextField)`
-  &.input {
-    .Mui-focused {
-      &.MuiFormLabel-root {
-        color: #914191;
-      }
-      &.MuiInput-underline:after,
-      &.MuiInput-underline:before {
-        border-bottom-color: #914191;
-      }
-    }
-    .MuiInput-underline:hover:not(.Mui-disabled):before,
-    .MuiInput-underline:hover:after {
-      border-bottom: 2px solid #914191;
-    }
-  }
-`;
-
-export const RepoList = styled.div`
+export const List = styled.div`
+  margin-top: 25px;
   flex: 1;
   overflow: scroll;
 `;
 
-export const RepoListItem = styled.a`
-  ${FlexCenter}
-  height: 40px;
-  width: 100%;
+export const ListItem = styled(Card)`
+  width: 46%;
+  margin: 2%;
   color: #000;
   background-color: whitesmoke;
   text-decoration: none;
-  border: 1px solid #fff;
-  padding: 25px;
+  display: inline-block;
+
+  .action-area {
+    padding: 25px;
+  }
 
   &:visited {
     color: #999;
@@ -65,7 +41,15 @@ export const RepoListItem = styled.a`
     }
   }
 
-  @media (max-width: ${MOBILE_MAX}) {
-    justify-content: left;
+  .image {
+    height: 300px;
+
+    @media (max-width: ${MOBILE_MAX}) {
+      height: 140px;
+    }
+
+    @media (min-width: ${TABLET_MIN}) {
+      height: 400px;
+    }
   }
 `;
