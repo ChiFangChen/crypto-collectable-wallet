@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/crypto-collectable-wallet/static/css/main.599e6dc6.chunk.css",
+    "main.js": "/crypto-collectable-wallet/static/js/main.c355bdc2.chunk.js",
+    "main.js.map": "/crypto-collectable-wallet/static/js/main.c355bdc2.chunk.js.map",
+    "runtime-main.js": "/crypto-collectable-wallet/static/js/runtime-main.d8264336.js",
+    "runtime-main.js.map": "/crypto-collectable-wallet/static/js/runtime-main.d8264336.js.map",
+    "static/css/2.7c3cbbb0.chunk.css": "/crypto-collectable-wallet/static/css/2.7c3cbbb0.chunk.css",
+    "static/js/2.c6eb00fa.chunk.js": "/crypto-collectable-wallet/static/js/2.c6eb00fa.chunk.js",
+    "static/js/2.c6eb00fa.chunk.js.map": "/crypto-collectable-wallet/static/js/2.c6eb00fa.chunk.js.map",
+    "static/js/3.c3a46876.chunk.js": "/crypto-collectable-wallet/static/js/3.c3a46876.chunk.js",
+    "static/js/3.c3a46876.chunk.js.map": "/crypto-collectable-wallet/static/js/3.c3a46876.chunk.js.map",
+    "index.html": "/crypto-collectable-wallet/index.html",
+    "static/css/2.7c3cbbb0.chunk.css.map": "/crypto-collectable-wallet/static/css/2.7c3cbbb0.chunk.css.map",
+    "static/css/main.599e6dc6.chunk.css.map": "/crypto-collectable-wallet/static/css/main.599e6dc6.chunk.css.map",
+    "static/js/2.c6eb00fa.chunk.js.LICENSE.txt": "/crypto-collectable-wallet/static/js/2.c6eb00fa.chunk.js.LICENSE.txt",
+    "static/media/getFetch.cjs": "/crypto-collectable-wallet/static/media/getFetch.d7d6010d.cjs",
+    "static/media/index.css": "/crypto-collectable-wallet/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d8264336.js",
+    "static/css/2.7c3cbbb0.chunk.css",
+    "static/js/2.c6eb00fa.chunk.js",
+    "static/css/main.599e6dc6.chunk.css",
+    "static/js/main.c355bdc2.chunk.js"
+  ]
+}
