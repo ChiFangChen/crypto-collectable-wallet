@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/crypto-collectable-wallet/static/css/main.599e6dc6.chunk.css",
-    "main.js": "/crypto-collectable-wallet/static/js/main.2fc2bb55.chunk.js",
-    "main.js.map": "/crypto-collectable-wallet/static/js/main.2fc2bb55.chunk.js.map",
+    "main.js": "/crypto-collectable-wallet/static/js/main.3f953d65.chunk.js",
+    "main.js.map": "/crypto-collectable-wallet/static/js/main.3f953d65.chunk.js.map",
     "runtime-main.js": "/crypto-collectable-wallet/static/js/runtime-main.d8264336.js",
     "runtime-main.js.map": "/crypto-collectable-wallet/static/js/runtime-main.d8264336.js.map",
     "static/css/2.7c3cbbb0.chunk.css": "/crypto-collectable-wallet/static/css/2.7c3cbbb0.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.7c3cbbb0.chunk.css",
     "static/js/2.c6eb00fa.chunk.js",
     "static/css/main.599e6dc6.chunk.css",
-    "static/js/main.2fc2bb55.chunk.js"
+    "static/js/main.3f953d65.chunk.js"
   ]
 }
